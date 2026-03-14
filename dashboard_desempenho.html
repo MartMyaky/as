@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Desempenho - Portal Avançado</title>
+<style>
+:root{
+  --azul:#0a3d91;
+  --azul2:#2563eb;
+  --claro:#f5f8ff;
+  --borda:#dbe6fb;
+  --txt:#13233d;
+  --muted:#617089;
+  --white:#fff;
+  --shadow:0 12px 28px rgba(10,61,145,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#eef4ff,#ffffff);color:var(--txt)}
+a{text-decoration:none;color:inherit}
+.topbar{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
+.topbar-inner{max-width:1500px;margin:auto;padding:14px 16px;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;font-weight:bold;box-shadow:var(--shadow)}
+.brand h1{margin:0;font-size:18px}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.menu-toggle{display:none;border:none;background:var(--azul);color:#fff;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer}
+.nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.nav-link{padding:9px 12px;border-radius:12px;font-size:13px}
+.nav-link:hover,.nav-link.active{background:#e8f0ff;color:var(--azul)}
+.hero,.section{max-width:1500px;margin:auto;padding:24px 16px}
+.hero-box{background:linear-gradient(135deg,#0a3d91,#2563eb);color:#fff;border-radius:30px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.25fr .95fr;gap:22px}
+.badge{display:inline-block;background:rgba(255,255,255,.16);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:bold}
+.hero h2{margin:12px 0 12px;font-size:38px;line-height:1.08}
+.hero p{font-size:17px;line-height:1.65;margin:0 0 18px;color:rgba(255,255,255,.94)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:12px 16px;border-radius:14px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center}
+.btn-primary{background:#fff;color:var(--azul)}
+.btn-secondary{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.panel{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:20px}
+.panel-item{background:rgba(255,255,255,.10);padding:14px;border-radius:16px;margin-top:12px}
+.panel-item strong{display:block;margin-bottom:6px}
+.content-box{background:#fff;border:1px solid var(--borda);border-radius:24px;padding:28px;box-shadow:var(--shadow)}
+.section h3{font-size:24px;margin:0 0 16px}
+.lead{font-size:17px;line-height:1.75;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+.card{background:var(--claro);border:1px solid var(--borda);border-radius:20px;padding:18px}
+.card h4{margin:0 0 10px;font-size:18px}
+.card p{margin:0;color:var(--muted);line-height:1.62}
+.editor{margin-top:22px;padding:18px;background:#f9fbff;border:1px solid var(--borda);border-radius:18px}
+label{display:block;font-weight:bold;margin-bottom:8px}
+input,select,textarea{width:100%;padding:12px 14px;border:1px solid #cfe0ff;border-radius:14px;font-size:15px}
+textarea{min-height:180px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+button.action{border:none;background:var(--azul);color:#fff;padding:11px 14px;border-radius:12px;font-weight:bold;cursor:pointer}
+button.action.alt{background:#e8f0ff;color:var(--azul)}
+.output{margin-top:18px;padding:16px;border-radius:16px;background:#fff;border:1px dashed #bfd4ff;color:var(--txt);min-height:80px}
+.quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.quick-link{padding:14px;border-radius:16px;background:#eff5ff;color:var(--azul);font-weight:bold;border:1px solid var(--borda)}
+.footer{background:#0e1e3f;color:#d9e5ff;margin-top:30px}
+.footer-inner{max-width:1500px;margin:auto;padding:26px 16px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (max-width:1100px){
+  .hero-box{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:820px){
+  .menu-toggle{display:block}
+  .nav{display:none;width:100%;padding-top:8px}
+  .nav.show{display:flex}
+  .topbar-inner{flex-wrap:wrap}
+  .row,.grid{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero h2{font-size:30px}
+}
+@media (max-width:560px){
+  .quick-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">P</div>
+      <div>
+        <h1>Portal Professores do Paraná</h1>
+        <p>Pacote avançado com 100 páginas úteis e conectadas</p>
+      </div>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+    <nav class="nav" id="mainNav">
+      <a href="hub_ia_educacional.html" class="nav-link">Hub de IA Educacional</a>
+<a href="gerador_bncc.html" class="nav-link">Gerador BNCC</a>
+<a href="sequencia_didatica.html" class="nav-link">Sequência Didática</a>
+<a href="trilhas_aprendizagem.html" class="nav-link">Trilhas de Aprendizagem</a>
+<a href="plano_intervencao.html" class="nav-link">Plano de Intervenção</a>
+<a href="avaliacao_diagnostica.html" class="nav-link">Avaliação Diagnóstica</a>
+<a href="avaliacao_formativa.html" class="nav-link">Avaliação Formativa</a>
+<a href="rubricas_avaliacao.html" class="nav-link">Rubricas de Avaliação</a>
+<a href="roteiros_videoaula.html" class="nav-link">Roteiros de Videoaula</a>
+<a href="studio_aulas.html" class="nav-link">Studio de Aulas</a>
+<a href="podcast_educacional.html" class="nav-link">Podcast Educacional</a>
+<a href="biblioteca_infantil.html" class="nav-link">Biblioteca Infantil</a>
+<a href="biblioteca_juvenil.html" class="nav-link">Biblioteca Juvenil</a>
+<a href="clube_leitura.html" class="nav-link">Clube de Leitura</a>
+<a href="producao_textual.html" class="nav-link">Produção Textual</a>
+<a href="redacao_argumentativa.html" class="nav-link">Redação Argumentativa</a>
+<a href="oficina_escrita_criativa.html" class="nav-link">Oficina de Escrita Criativa</a>
+<a href="correcao_redacao.html" class="nav-link">Correção de Redação</a>
+<a href="leitura_interpretacao.html" class="nav-link">Leitura e Interpretação</a>
+<a href="alfabetizacao_digital.html" class="nav-link">Alfabetização Digital</a>
+<a href="cidadania_digital.html" class="nav-link">Cidadania Digital</a>
+<a href="seguranca_internet.html" class="nav-link">Segurança na Internet</a>
+<a href="laboratorio_robotica.html" class="nav-link">Laboratório de Robótica</a>
+<a href="maker_space.html" class="nav-link">Maker Space</a>
+<a href="programacao_blocos.html" class="nav-link">Programação em Blocos</a>
+<a href="programacao_web.html" class="nav-link">Programação Web</a>
+<a href="programacao_python.html" class="nav-link">Programação Python</a>
+<a href="algoritmos_logica.html" class="nav-link">Algoritmos e Lógica</a>
+<a href="simulador_fisica_mecanica.html" class="nav-link">Simulador de Física Mecânica</a>
+<a href="simulador_fisica_eletrica.html" class="nav-link">Simulador de Física Elétrica</a>
+<a href="simulador_quimica_organica.html" class="nav-link">Simulador de Química Orgânica</a>
+<a href="simulador_quimica_inorganica.html" class="nav-link">Simulador de Química Inorgânica</a>
+<a href="biologia_genetica.html" class="nav-link">Biologia Genética</a>
+<a href="biologia_ecologia.html" class="nav-link">Biologia Ecologia</a>
+<a href="geografia_cartografia.html" class="nav-link">Geografia Cartografia</a>
+<a href="geografia_geopolitica.html" class="nav-link">Geografia Geopolítica</a>
+<a href="historia_antiga.html" class="nav-link">História Antiga</a>
+<a href="historia_brasil.html" class="nav-link">História do Brasil</a>
+<a href="filosofia_debate.html" class="nav-link">Filosofia em Debate</a>
+<a href="sociologia_critica.html" class="nav-link">Sociologia Crítica</a>
+<a href="ingles_conversacao.html" class="nav-link">Inglês Conversação</a>
+<a href="ingles_gramatica.html" class="nav-link">Inglês Gramática</a>
+<a href="arte_visuais.html" class="nav-link">Artes Visuais</a>
+<a href="musica_educacao.html" class="nav-link">Música na Educação</a>
+<a href="educacao_financeira.html" class="nav-link">Educação Financeira</a>
+<a href="empreendedorismo_escolar.html" class="nav-link">Empreendedorismo Escolar</a>
+<a href="orientacao_estudos.html" class="nav-link">Orientação de Estudos</a>
+<a href="gestao_tempo.html" class="nav-link">Gestão do Tempo</a>
+<a href="saude_bem_estar.html" class="nav-link">Saúde e Bem-Estar</a>
+<a href="educacao_inclusiva.html" class="nav-link">Educação Inclusiva</a>
+<a href="atendimento_especializado.html" class="nav-link">Atendimento Especializado</a>
+<a href="adaptacoes_curriculares.html" class="nav-link">Adaptações Curriculares</a>
+<a href="acessibilidade_digital.html" class="nav-link">Acessibilidade Digital</a>
+<a href="comunicacao_escola_familia.html" class="nav-link">Comunicação Escola-Família</a>
+<a href="reunioes_pedagogicas.html" class="nav-link">Reuniões Pedagógicas</a>
+<a href="conselho_classe.html" class="nav-link">Conselho de Classe</a>
+<a href="gestao_sala_aula.html" class="nav-link">Gestão de Sala de Aula</a>
+<a href="mediacao_conflitos.html" class="nav-link">Mediação de Conflitos</a>
+<a href="projeto_vida.html" class="nav-link">Projeto de Vida</a>
+<a href="orientacao_profissional.html" class="nav-link">Orientação Profissional</a>
+<a href="feira_ciencias.html" class="nav-link">Feira de Ciências</a>
+<a href="feira_cultural.html" class="nav-link">Feira Cultural</a>
+<a href="gamificacao_escolar.html" class="nav-link">Gamificação Escolar</a>
+<a href="aprendizagem_baseada_projetos.html" class="nav-link">Aprendizagem Baseada em Projetos</a>
+<a href="aprendizagem_baseada_problemas.html" class="nav-link">Aprendizagem Baseada em Problemas</a>
+<a href="ensino_hibrido.html" class="nav-link">Ensino Híbrido</a>
+<a href="sala_aula_invertida.html" class="nav-link">Sala de Aula Invertida</a>
+<a href="microlearning.html" class="nav-link">Microlearning</a>
+<a href="painel_metas_turma.html" class="nav-link">Painel de Metas da Turma</a>
+<a href="dashboard_desempenho.html" class="nav-link">Dashboard de Desempenho</a>
+<a href="registro_frequencia.html" class="nav-link">Registro de Frequência</a>
+<a href="registro_ocorrencias.html" class="nav-link">Registro de Ocorrências</a>
+<a href="portifolio_aluno.html" class="nav-link">Portfólio do Aluno</a>
+<a href="portfolio_professor.html" class="nav-link">Portfólio do Professor</a>
+<a href="gerador_relatorio_individual.html" class="nav-link">Gerador de Relatório Individual</a>
+<a href="gerador_relatorio_turma.html" class="nav-link">Gerador de Relatório de Turma</a>
+<a href="calendario_escolar.html" class="nav-link">Calendário Escolar</a>
+<a href="agenda_pedagogica.html" class="nav-link">Agenda Pedagógica</a>
+<a href="central_documentos.html" class="nav-link">Central de Documentos</a>
+<a href="central_downloads.html" class="nav-link">Central de Downloads</a>
+<a href="hub_formularios.html" class="nav-link">Hub de Formulários</a>
+<a href="criador_enquetes.html" class="nav-link">Criador de Enquetes</a>
+<a href="pesquisa_satisfacao.html" class="nav-link">Pesquisa de Satisfação</a>
+<a href="mapa_habilidades.html" class="nav-link">Mapa de Habilidades</a>
+<a href="monitoria_estudos.html" class="nav-link">Monitoria de Estudos</a>
+<a href="tutoria_personalizada.html" class="nav-link">Tutoria Personalizada</a>
+<a href="recuperacao_paralela.html" class="nav-link">Recuperação Paralela</a>
+<a href="intensivo_enem.html" class="nav-link">Intensivo ENEM</a>
+<a href="intensivo_vestibular.html" class="nav-link">Intensivo Vestibular</a>
+<a href="enem_humanas.html" class="nav-link">ENEM Humanas</a>
+<a href="enem_linguagens.html" class="nav-link">ENEM Linguagens</a>
+<a href="enem_matematica.html" class="nav-link">ENEM Matemática</a>
+<a href="enem_natureza.html" class="nav-link">ENEM Natureza</a>
+<a href="vestibular_medicina.html" class="nav-link">Vestibular Medicina</a>
+<a href="olimpiadas_cientificas.html" class="nav-link">Olimpíadas Científicas</a>
+<a href="xadrez_educacional.html" class="nav-link">Xadrez Educacional</a>
+<a href="educacao_ambiental.html" class="nav-link">Educação Ambiental</a>
+<a href="horta_escolar.html" class="nav-link">Horta Escolar</a>
+<a href="turismo_pedagogico.html" class="nav-link">Turismo Pedagógico</a>
+<a href="jornal_escolar.html" class="nav-link">Jornal Escolar</a>
+<a href="radio_escolar.html" class="nav-link">Rádio Escolar</a>
+<a href="tv_escolar.html" class="nav-link">TV Escolar</a>
+<a href="hub_myakybot_avancado.html" class="nav-link">Hub MyakyBot Avançado</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <div>
+      <span class="badge">Página avançada conectada</span>
+      <h2>Dashboard de Desempenho</h2>
+      <p>Mostra indicadores pedagógicos e evolução da aprendizagem.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="hub_ia_educacional.html">Abrir início</a>
+        <a class="btn btn-secondary" href="hub_myakybot_avancado.html">Abrir MyakyBot</a>
+      </div>
+    </div>
+    <div class="panel">
+      <strong>Resumo rápido</strong>
+      <div class="panel-item"><strong>Objetivo</strong>Mostra indicadores pedagógicos e evolução da aprendizagem.</div>
+      <div class="panel-item"><strong>Uso</strong>Professores, estudantes, coordenação e projetos escolares.</div>
+      <div class="panel-item"><strong>Base</strong>Página pronta para receber novas funções, filtros, IA e exportações.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-box">
+    <h3>Conteúdo utilizável e expansível</h3>
+    <p class='lead'>Dashboard de Desempenho foi pensada como uma área versátil do portal, com foco em uso real no dia a dia escolar. Mostra indicadores pedagógicos e evolução da aprendizagem. A proposta desta página é oferecer um espaço que sirva tanto para consulta quanto para produção pedagógica, permitindo adaptar o conteúdo ao ensino fundamental, médio, reforço escolar, projetos interdisciplinares e preparação para avaliações.</p>
+<p class='lead'>Na prática, esta página pode ser usada para montar materiais, registrar ideias, organizar propostas, revisar conteúdos e transformar planejamento em ação. O professor pode começar com um objetivo simples, como revisar um tema, e expandir para trilhas de estudo, sequências, avaliações, intervenções e acompanhamento. O mesmo ambiente também pode atender estudantes em estudo autônomo.</p>
+<p class='lead'>A estrutura foi feita para ser acessível, limpa e expansível. Isso significa que ela pode receber novos botões, filtros, geradores, bancos de dados locais, exportação para PDF, integração com inteligência artificial, área de salvamento e compartilhamento entre páginas do portal. Em vez de ser apenas uma página estática, ela já nasce como base para uma ferramenta viva.</p>
+<p class='lead'>Outro ponto importante é a versatilidade. Você pode transformar esta página em um painel de conteúdos, um organizador de tarefas, um editor de materiais, um espaço de revisão guiada ou até uma central de recursos por disciplina. Como o layout está conectado ao restante do portal, a navegação permanece consistente e profissional, o que ajuda bastante na experiência do usuário.</p>
+<p class='lead'>Também foi pensado o uso inclusivo. Textos mais claros, separação visual, áreas de ação e campos objetivos tornam o ambiente mais amigável. Isso ajuda professores, estudantes e equipes pedagógicas a usar a ferramenta sem dificuldade. Com pequenos ajustes, esta página ainda pode receber contraste ampliado, leitura em voz alta, recursos de acessibilidade e personalização por perfil.</p>
+<p class='lead'>Por fim, esta área pode funcionar como motor de expansão do portal. Hoje ela já entrega conteúdo utilizável, navegação integrada e interação básica. Amanhã, pode receber geradores automáticos, relatórios, dashboards, simuladores, laboratórios virtuais, formulários inteligentes e fluxos do MyakyBot. É uma base forte para crescer sem precisar reconstruir tudo depois.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="content-box">
+    <h3>Blocos práticos desta página</h3>
+    <div class="grid">
+      <div class='card'><h4>Planejamento aplicável</h4><p>Use dashboard de desempenho para criar rotinas, propostas e materiais que façam sentido no contexto real da escola.</p></div>
+<div class='card'><h4>Conteúdo reutilizável</h4><p>A estrutura permite copiar, adaptar e reaproveitar o que foi produzido em outras turmas, séries e disciplinas.</p></div>
+<div class='card'><h4>Expansão com IA</h4><p>Você pode futuramente integrar prompts, geração automática e correção assistida nesta mesma base.</p></div>
+<div class='card'><h4>Acompanhamento contínuo</h4><p>A página pode evoluir para registrar progresso, resultados, devolutivas e histórico pedagógico.</p></div>
+<div class='card'><h4>Uso interdisciplinar</h4><p>Com ajustes simples, a mesma base atende diferentes áreas do conhecimento e projetos integrados.</p></div>
+<div class='card'><h4>Acesso rápido</h4><p>O menu compartilhado facilita circular por dezenas de páginas sem perder a organização visual.</p></div>
+    </div>
+
+    <div class="editor">
+      <div class="row">
+        <div>
+          <label for="tema">Tema</label>
+          <input id="tema" placeholder="Ex.: frações, ecologia, leitura crítica, projeto de vida">
+        </div>
+        <div>
+          <label for="nivel">Nível</label>
+          <select id="nivel">
+            <option>Ensino Fundamental I</option>
+            <option>Ensino Fundamental II</option>
+            <option>Ensino Médio</option>
+            <option>EJA</option>
+            <option>Reforço Escolar</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:14px">
+        <label for="objetivo">Objetivo pedagógico</label>
+        <textarea id="objetivo" placeholder="Descreva o que deseja desenvolver nesta página ou recurso."></textarea>
+      </div>
+      <div class="toolbar">
+        <button class="action" onclick="gerarConteudo()">Gerar sugestão</button>
+        <button class="action alt" onclick="limparSaida()">Limpar</button>
+      </div>
+      <div id="saida" class="output">As sugestões geradas aparecerão aqui.</div>
+    </div>
+
+    <div class="quick-grid">
+      <a class='quick-link' href='hub_ia_educacional.html'>Hub de IA Educacional</a>
+<a class='quick-link' href='gerador_bncc.html'>Gerador BNCC</a>
+<a class='quick-link' href='sequencia_didatica.html'>Sequência Didática</a>
+<a class='quick-link' href='trilhas_aprendizagem.html'>Trilhas de Aprendizagem</a>
+<a class='quick-link' href='plano_intervencao.html'>Plano de Intervenção</a>
+<a class='quick-link' href='avaliacao_diagnostica.html'>Avaliação Diagnóstica</a>
+<a class='quick-link' href='avaliacao_formativa.html'>Avaliação Formativa</a>
+<a class='quick-link' href='rubricas_avaliacao.html'>Rubricas de Avaliação</a>
+<a class='quick-link' href='roteiros_videoaula.html'>Roteiros de Videoaula</a>
+<a class='quick-link' href='studio_aulas.html'>Studio de Aulas</a>
+<a class='quick-link' href='podcast_educacional.html'>Podcast Educacional</a>
+<a class='quick-link' href='biblioteca_infantil.html'>Biblioteca Infantil</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <strong>Portal Professores do Paraná</strong>
+      <div>Pacote avançado com 100 páginas HTML conectadas.</div>
+    </div>
+    <div>
+      <div>Dashboard de Desempenho</div>
+      <div>Estrutura pronta para expansão.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const nav = document.getElementById('mainNav');
+  nav.classList.toggle('show');
+}
+function gerarConteudo(){
+  const tema = document.getElementById('tema')?.value || 'tema pedagógico';
+  const nivel = document.getElementById('nivel')?.value || 'ensino fundamental';
+  const objetivo = document.getElementById('objetivo')?.value || 'apoiar a aprendizagem';
+  const texto = `
+Plano sugerido para ${tema}:
+1. Contextualização inicial com linguagem acessível para ${nivel}.
+2. Desenvolvimento com exemplos, explicações guiadas e participação ativa.
+3. Atividade prática alinhada ao objetivo de ${objetivo}.
+4. Avaliação com critérios claros, devolutiva e possibilidade de retomada.
+5. Extensão com pesquisa, produção autoral ou integração interdisciplinar.
+  `.trim();
+  const out = document.getElementById('saida');
+  if(out) out.textContent = texto;
+}
+function limparSaida(){
+  const out = document.getElementById('saida');
+  if(out) out.textContent = '';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const current = location.pathname.split('/').pop() || 'hub_ia_educacional.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if(link.getAttribute('href') === current) link.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

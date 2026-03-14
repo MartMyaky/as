@@ -1,0 +1,3278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Master Gigante - Professores do Paraná</title>
+<style>
+:root {
+  --azul:#0b3d91;
+  --azul2:#2563eb;
+  --txt:#13233d;
+  --muted:#64748b;
+  --bg:#f4f8ff;
+  --card:#ffffff;
+  --borda:#dbe6fb;
+  --shadow:0 14px 34px rgba(11,61,145,.10);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#edf4ff,#fff);color:var(--txt)}
+a{text-decoration:none;color:inherit}
+.topbar {
+  position:sticky; top:0; z-index:1000;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--borda);
+}
+.topbar-inner {
+  max-width:1600px; margin:auto; padding:14px 18px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo {
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;font-weight:bold;
+  box-shadow:var(--shadow);font-size:22px;
+}
+.brand h1{margin:0;font-size:20px}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.nav{display:flex;gap:10px;flex-wrap:wrap}
+.nav a{padding:10px 12px;border-radius:12px;background:#eef4ff;color:var(--azul);font-weight:bold;font-size:14px}
+.hero{max-width:1600px;margin:auto;padding:26px 18px}
+.hero-box {
+  background:linear-gradient(135deg,#0b3d91,#2563eb);
+  color:#fff; border-radius:32px; box-shadow:var(--shadow);
+  padding:38px; display:grid; grid-template-columns:1.25fr .9fr; gap:24px;
+}
+.badge{display:inline-block;background:rgba(255,255,255,.16);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:bold}
+.hero h2{font-size:44px;line-height:1.06;margin:14px 0 14px}
+.hero p{font-size:18px;line-height:1.7;margin:0 0 18px;color:rgba(255,255,255,.94)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:13px 18px;border-radius:14px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center}
+.btn-primary{background:#fff;color:var(--azul)}
+.btn-secondary{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.panel{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:22px}
+.panel-item{background:rgba(255,255,255,.10);padding:14px 16px;border-radius:16px;margin-top:12px}
+.panel-item strong{display:block;margin-bottom:6px}
+.search-wrap{max-width:1600px;margin:auto;padding:0 18px 8px}
+.search-box{background:#fff;border:1px solid var(--borda);box-shadow:var(--shadow);border-radius:22px;padding:18px}
+.search-box input{width:100%;padding:15px 16px;border:1px solid #cfe0ff;border-radius:14px;font-size:16px}
+.section{max-width:1600px;margin:auto;padding:18px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:16px}
+.section-head h2{margin:0;font-size:30px}
+.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--borda);border-radius:22px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:190px;transition:.22s}
+.card:hover{transform:translateY(-4px);border-color:#b7cdf6}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}
+.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#eef4ff;color:var(--azul);font-weight:bold}
+.tag{font-size:11px;color:var(--muted);background:#f8fbff;border:1px solid var(--borda);padding:6px 8px;border-radius:999px}
+.card h3{margin:0 0 10px;font-size:19px}
+.card p{margin:0 0 14px;color:var(--muted);line-height:1.55;flex:1}
+.open{font-weight:bold;color:var(--azul)}
+.footer{margin-top:24px;background:#0d1f3c;color:#dbe7ff}
+.footer-inner{max-width:1600px;margin:auto;padding:28px 18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hidden{display:none !important}
+@media (max-width:1100px){
+  .hero-box{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:820px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero h2{font-size:34px}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .hero-box{padding:24px}
+  .hero h2{font-size:28px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">P</div>
+      <div>
+        <h1>Portal Master Gigante</h1>
+        <p>Central principal com todas as páginas do seu portal</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#busca">Buscar páginas</a>
+      <a href="#atalhos">Atalhos</a>
+      <a href="myakybot.html">MyakyBot</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <div>
+      <span class="badge">Portal unificado</span>
+      <h2>Seu portal agora está reunido em uma home master gigante</h2>
+      <p>
+        Juntei a base anterior, as 50 páginas úteis e as 100+ páginas avançadas em uma central única.
+        Agora você tem uma entrada principal para navegar por todas as áreas do projeto com muito mais organização.
+      </p>
+      <div class="hero-actions" id="atalhos">
+        <a class="btn btn-primary" href="#busca">Buscar páginas</a>
+        <a class="btn btn-secondary" href="hub_ia_educacional.html">Abrir hub de IA</a>
+        <a class="btn btn-secondary" href="laboratorio.html">Abrir laboratório</a>
+      </div>
+    </div>
+    <div class="panel">
+      <strong>Resumo do pacote</strong>
+      <div class="panel-item"><strong>Total de páginas</strong>276 arquivos HTML contando esta home master.</div>
+      <div class="panel-item"><strong>Organização</strong>Páginas separadas por tipo para facilitar navegação e expansão.</div>
+      <div class="panel-item"><strong>Próximo nível</strong>Base pronta para login, IA, banco de dados, PDF e recursos reais.</div>
+    </div>
+  </div>
+</section>
+
+<section class="search-wrap" id="busca">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar página por nome, tema ou categoria...">
+  </div>
+</section>
+
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Portal Base</h2>
+        <p>22 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="atividades.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">atividades.html</span>
+            </div>
+            <h3>Atividades</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="biblioteca.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">biblioteca.html</span>
+            </div>
+            <h3>Biblioteca</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="caca-palavras.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">caca-palavras.html</span>
+            </div>
+            <h3>Caca Palavras</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="calculadoras.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">calculadoras.html</span>
+            </div>
+            <h3>Calculadoras</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="certificados.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">certificados.html</span>
+            </div>
+            <h3>Certificados</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="comunidade.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">comunidade.html</span>
+            </div>
+            <h3>Comunidade</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="editor.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">editor.html</span>
+            </div>
+            <h3>Editor</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="enem.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">enem.html</span>
+            </div>
+            <h3>Enem</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="graficos.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">graficos.html</span>
+            </div>
+            <h3>Graficos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="index.html">
+            <div class="card-top">
+                <span class="icon">I</span>
+                <span class="tag">index.html</span>
+            </div>
+            <h3>Index</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="jogos.html">
+            <div class="card-top">
+                <span class="icon">J</span>
+                <span class="tag">jogos.html</span>
+            </div>
+            <h3>Jogos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="laboratorio.html">
+            <div class="card-top">
+                <span class="icon">L</span>
+                <span class="tag">laboratorio.html</span>
+            </div>
+            <h3>Laboratorio</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="mapas.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">mapas.html</span>
+            </div>
+            <h3>Mapas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="myakybot.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">myakybot.html</span>
+            </div>
+            <h3>Myakybot</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="noticias.html">
+            <div class="card-top">
+                <span class="icon">N</span>
+                <span class="tag">noticias.html</span>
+            </div>
+            <h3>Noticias</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="planejador.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">planejador.html</span>
+            </div>
+            <h3>Planejador</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="planos.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">planos.html</span>
+            </div>
+            <h3>Planos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="projetos.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">projetos.html</span>
+            </div>
+            <h3>Projetos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="provas.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">provas.html</span>
+            </div>
+            <h3>Provas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="quiz.html">
+            <div class="card-top">
+                <span class="icon">Q</span>
+                <span class="tag">quiz.html</span>
+            </div>
+            <h3>Quiz</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="slides.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">slides.html</span>
+            </div>
+            <h3>Slides</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="videos.html">
+            <div class="card-top">
+                <span class="icon">V</span>
+                <span class="tag">videos.html</span>
+            </div>
+            <h3>Videos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Ferramentas Educacionais</h2>
+        <p>33 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="biblioteca_digital.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">biblioteca_digital.html</span>
+            </div>
+            <h3>Biblioteca Digital</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="corretor_textos.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">corretor_textos.html</span>
+            </div>
+            <h3>Corretor Textos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_caca_palavras.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_caca_palavras.html</span>
+            </div>
+            <h3>Criador Caca Palavras</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_enquetes.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_enquetes.html</span>
+            </div>
+            <h3>Criador Enquetes</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_flashcards.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_flashcards.html</span>
+            </div>
+            <h3>Criador Flashcards</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_infograficos.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_infograficos.html</span>
+            </div>
+            <h3>Criador Infograficos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_jogos_educativos.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_jogos_educativos.html</span>
+            </div>
+            <h3>Criador Jogos Educativos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_palavras_cruzadas.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_palavras_cruzadas.html</span>
+            </div>
+            <h3>Criador Palavras Cruzadas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_quiz.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_quiz.html</span>
+            </div>
+            <h3>Criador Quiz</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="criador_slides.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">criador_slides.html</span>
+            </div>
+            <h3>Criador Slides</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="editor_equacoes.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">editor_equacoes.html</span>
+            </div>
+            <h3>Editor Equacoes</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="editor_matematica.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">editor_matematica.html</span>
+            </div>
+            <h3>Editor Matematica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="editor_textos.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">editor_textos.html</span>
+            </div>
+            <h3>Editor Textos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_atividades.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_atividades.html</span>
+            </div>
+            <h3>Gerador Atividades</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_bncc.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_bncc.html</span>
+            </div>
+            <h3>Gerador Bncc</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_certificados.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_certificados.html</span>
+            </div>
+            <h3>Gerador Certificados</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_desafios.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_desafios.html</span>
+            </div>
+            <h3>Gerador Desafios</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_graficos.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_graficos.html</span>
+            </div>
+            <h3>Gerador Graficos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_listas_exercicios.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_listas_exercicios.html</span>
+            </div>
+            <h3>Gerador Listas Exercicios</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_mapas_mentais.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_mapas_mentais.html</span>
+            </div>
+            <h3>Gerador Mapas Mentais</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_planos_aula.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_planos_aula.html</span>
+            </div>
+            <h3>Gerador Planos Aula</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_projetos_escolares.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_projetos_escolares.html</span>
+            </div>
+            <h3>Gerador Projetos Escolares</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_provas.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_provas.html</span>
+            </div>
+            <h3>Gerador Provas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_relatorio_individual.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_relatorio_individual.html</span>
+            </div>
+            <h3>Gerador Relatorio Individual</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_relatorio_turma.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_relatorio_turma.html</span>
+            </div>
+            <h3>Gerador Relatorio Turma</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_relatorios.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_relatorios.html</span>
+            </div>
+            <h3>Gerador Relatorios</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_resumos.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_resumos.html</span>
+            </div>
+            <h3>Gerador Resumos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_roteiros_aula.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_roteiros_aula.html</span>
+            </div>
+            <h3>Gerador Roteiros Aula</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_tarefas.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_tarefas.html</span>
+            </div>
+            <h3>Gerador Tarefas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gerador_traducoes.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gerador_traducoes.html</span>
+            </div>
+            <h3>Gerador Traducoes</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="ingles_gramatica.html">
+            <div class="card-top">
+                <span class="icon">I</span>
+                <span class="tag">ingles_gramatica.html</span>
+            </div>
+            <h3>Ingles Gramatica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="organizacao_arquivos.html">
+            <div class="card-top">
+                <span class="icon">O</span>
+                <span class="tag">organizacao_arquivos.html</span>
+            </div>
+            <h3>Organizacao Arquivos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="verificador_gramatica.html">
+            <div class="card-top">
+                <span class="icon">V</span>
+                <span class="tag">verificador_gramatica.html</span>
+            </div>
+            <h3>Verificador Gramatica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Planejamento e Avaliação</h2>
+        <p>13 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="avaliacao_diagnostica.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">avaliacao_diagnostica.html</span>
+            </div>
+            <h3>Avaliacao Diagnostica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="avaliacao_formativa.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">avaliacao_formativa.html</span>
+            </div>
+            <h3>Avaliacao Formativa</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="monitoria_estudos.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">monitoria_estudos.html</span>
+            </div>
+            <h3>Monitoria Estudos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="painel_metas_turma.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">painel_metas_turma.html</span>
+            </div>
+            <h3>Painel Metas Turma</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="planejamento_anual.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">planejamento_anual.html</span>
+            </div>
+            <h3>Planejamento Anual</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="planejamento_semanal.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">planejamento_semanal.html</span>
+            </div>
+            <h3>Planejamento Semanal</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="plano_intervencao.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">plano_intervencao.html</span>
+            </div>
+            <h3>Plano Intervencao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="recuperacao_paralela.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">recuperacao_paralela.html</span>
+            </div>
+            <h3>Recuperacao Paralela</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="registro_frequencia.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">registro_frequencia.html</span>
+            </div>
+            <h3>Registro Frequencia</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="rubricas_avaliacao.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">rubricas_avaliacao.html</span>
+            </div>
+            <h3>Rubricas Avaliacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="sequencia_didatica.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">sequencia_didatica.html</span>
+            </div>
+            <h3>Sequencia Didatica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="trilhas_aprendizagem.html">
+            <div class="card-top">
+                <span class="icon">T</span>
+                <span class="tag">trilhas_aprendizagem.html</span>
+            </div>
+            <h3>Trilhas Aprendizagem</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="tutoria_personalizada.html">
+            <div class="card-top">
+                <span class="icon">T</span>
+                <span class="tag">tutoria_personalizada.html</span>
+            </div>
+            <h3>Tutoria Personalizada</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Laboratórios e Simuladores</h2>
+        <p>15 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="biologia_ecologia.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">biologia_ecologia.html</span>
+            </div>
+            <h3>Biologia Ecologia</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="biologia_genetica.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">biologia_genetica.html</span>
+            </div>
+            <h3>Biologia Genetica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="laboratorio_biologia.html">
+            <div class="card-top">
+                <span class="icon">L</span>
+                <span class="tag">laboratorio_biologia.html</span>
+            </div>
+            <h3>Laboratorio Biologia</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="laboratorio_fisica.html">
+            <div class="card-top">
+                <span class="icon">L</span>
+                <span class="tag">laboratorio_fisica.html</span>
+            </div>
+            <h3>Laboratorio Fisica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="laboratorio_quimica.html">
+            <div class="card-top">
+                <span class="icon">L</span>
+                <span class="tag">laboratorio_quimica.html</span>
+            </div>
+            <h3>Laboratorio Quimica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="laboratorio_robotica.html">
+            <div class="card-top">
+                <span class="icon">L</span>
+                <span class="tag">laboratorio_robotica.html</span>
+            </div>
+            <h3>Laboratorio Robotica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="maker_space.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">maker_space.html</span>
+            </div>
+            <h3>Maker Space</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_enem.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_enem.html</span>
+            </div>
+            <h3>Simulador Enem</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_experimentos.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_experimentos.html</span>
+            </div>
+            <h3>Simulador Experimentos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_fisica_eletrica.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_fisica_eletrica.html</span>
+            </div>
+            <h3>Simulador Fisica Eletrica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_fisica_mecanica.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_fisica_mecanica.html</span>
+            </div>
+            <h3>Simulador Fisica Mecanica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_quimica_inorganica.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_quimica_inorganica.html</span>
+            </div>
+            <h3>Simulador Quimica Inorganica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_quimica_organica.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_quimica_organica.html</span>
+            </div>
+            <h3>Simulador Quimica Organica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_redacao_enem.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_redacao_enem.html</span>
+            </div>
+            <h3>Simulador Redacao Enem</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="simulador_vestibular.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">simulador_vestibular.html</span>
+            </div>
+            <h3>Simulador Vestibular</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>ENEM e Vestibular</h2>
+        <p>11 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="correcao_redacao.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">correcao_redacao.html</span>
+            </div>
+            <h3>Correcao Redacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="enem_humanas.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">enem_humanas.html</span>
+            </div>
+            <h3>Enem Humanas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="enem_linguagens.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">enem_linguagens.html</span>
+            </div>
+            <h3>Enem Linguagens</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="enem_matematica.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">enem_matematica.html</span>
+            </div>
+            <h3>Enem Matematica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="enem_natureza.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">enem_natureza.html</span>
+            </div>
+            <h3>Enem Natureza</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="intensivo_enem.html">
+            <div class="card-top">
+                <span class="icon">I</span>
+                <span class="tag">intensivo_enem.html</span>
+            </div>
+            <h3>Intensivo Enem</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="intensivo_vestibular.html">
+            <div class="card-top">
+                <span class="icon">I</span>
+                <span class="tag">intensivo_vestibular.html</span>
+            </div>
+            <h3>Intensivo Vestibular</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="olimpiadas_cientificas.html">
+            <div class="card-top">
+                <span class="icon">O</span>
+                <span class="tag">olimpiadas_cientificas.html</span>
+            </div>
+            <h3>Olimpiadas Cientificas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="redacao_argumentativa.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">redacao_argumentativa.html</span>
+            </div>
+            <h3>Redacao Argumentativa</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="treinador_redacao.html">
+            <div class="card-top">
+                <span class="icon">T</span>
+                <span class="tag">treinador_redacao.html</span>
+            </div>
+            <h3>Treinador Redacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="vestibular_medicina.html">
+            <div class="card-top">
+                <span class="icon">V</span>
+                <span class="tag">vestibular_medicina.html</span>
+            </div>
+            <h3>Vestibular Medicina</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Gestão Escolar e Relatórios</h2>
+        <p>14 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="agenda_pedagogica.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">agenda_pedagogica.html</span>
+            </div>
+            <h3>Agenda Pedagogica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="calendario_escolar.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">calendario_escolar.html</span>
+            </div>
+            <h3>Calendario Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="central_documentos.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">central_documentos.html</span>
+            </div>
+            <h3>Central Documentos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="central_downloads.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">central_downloads.html</span>
+            </div>
+            <h3>Central Downloads</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="conselho_classe.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">conselho_classe.html</span>
+            </div>
+            <h3>Conselho Classe</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="controle_notas.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">controle_notas.html</span>
+            </div>
+            <h3>Controle Notas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="dashboard_desempenho.html">
+            <div class="card-top">
+                <span class="icon">D</span>
+                <span class="tag">dashboard_desempenho.html</span>
+            </div>
+            <h3>Dashboard Desempenho</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="dashboard_educacional.html">
+            <div class="card-top">
+                <span class="icon">D</span>
+                <span class="tag">dashboard_educacional.html</span>
+            </div>
+            <h3>Dashboard Educacional</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gestao_sala_aula.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gestao_sala_aula.html</span>
+            </div>
+            <h3>Gestao Sala Aula</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gestao_tempo.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gestao_tempo.html</span>
+            </div>
+            <h3>Gestao Tempo</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gestor_turmas.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gestor_turmas.html</span>
+            </div>
+            <h3>Gestor Turmas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="portfolio_professor.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">portfolio_professor.html</span>
+            </div>
+            <h3>Portfolio Professor</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="portifolio_aluno.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">portifolio_aluno.html</span>
+            </div>
+            <h3>Portifolio Aluno</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="registro_ocorrencias.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">registro_ocorrencias.html</span>
+            </div>
+            <h3>Registro Ocorrencias</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Tecnologia, IA e Programação</h2>
+        <p>23 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="acessibilidade_digital.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">acessibilidade_digital.html</span>
+            </div>
+            <h3>Acessibilidade Digital</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="alfabetizacao_digital.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">alfabetizacao_digital.html</span>
+            </div>
+            <h3>Alfabetizacao Digital</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="algoritmos_logica.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">algoritmos_logica.html</span>
+            </div>
+            <h3>Algoritmos Logica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="assistente_myakybot.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">assistente_myakybot.html</span>
+            </div>
+            <h3>Assistente Myakybot</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="atendimento_especializado.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">atendimento_especializado.html</span>
+            </div>
+            <h3>Atendimento Especializado</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="calculadora_geometria.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">calculadora_geometria.html</span>
+            </div>
+            <h3>Calculadora Geometria</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="cidadania_digital.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">cidadania_digital.html</span>
+            </div>
+            <h3>Cidadania Digital</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="comunicacao_escola_familia.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">comunicacao_escola_familia.html</span>
+            </div>
+            <h3>Comunicacao Escola Familia</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="feira_ciencias.html">
+            <div class="card-top">
+                <span class="icon">F</span>
+                <span class="tag">feira_ciencias.html</span>
+            </div>
+            <h3>Feira Ciencias</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="filosofia_debate.html">
+            <div class="card-top">
+                <span class="icon">F</span>
+                <span class="tag">filosofia_debate.html</span>
+            </div>
+            <h3>Filosofia Debate</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="geografia_cartografia.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">geografia_cartografia.html</span>
+            </div>
+            <h3>Geografia Cartografia</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="geografia_geopolitica.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">geografia_geopolitica.html</span>
+            </div>
+            <h3>Geografia Geopolitica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="historia_antiga.html">
+            <div class="card-top">
+                <span class="icon">H</span>
+                <span class="tag">historia_antiga.html</span>
+            </div>
+            <h3>Historia Antiga</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="historia_brasil.html">
+            <div class="card-top">
+                <span class="icon">H</span>
+                <span class="tag">historia_brasil.html</span>
+            </div>
+            <h3>Historia Brasil</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="hub_ia_educacional.html">
+            <div class="card-top">
+                <span class="icon">H</span>
+                <span class="tag">hub_ia_educacional.html</span>
+            </div>
+            <h3>Hub Ia Educacional</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="hub_myakybot_avancado.html">
+            <div class="card-top">
+                <span class="icon">H</span>
+                <span class="tag">hub_myakybot_avancado.html</span>
+            </div>
+            <h3>Hub Myakybot Avancado</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="mediacao_conflitos.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">mediacao_conflitos.html</span>
+            </div>
+            <h3>Mediacao Conflitos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="oficina_escrita_criativa.html">
+            <div class="card-top">
+                <span class="icon">O</span>
+                <span class="tag">oficina_escrita_criativa.html</span>
+            </div>
+            <h3>Oficina Escrita Criativa</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="programacao_blocos.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">programacao_blocos.html</span>
+            </div>
+            <h3>Programacao Blocos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="programacao_python.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">programacao_python.html</span>
+            </div>
+            <h3>Programacao Python</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="programacao_web.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">programacao_web.html</span>
+            </div>
+            <h3>Programacao Web</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="seguranca_internet.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">seguranca_internet.html</span>
+            </div>
+            <h3>Seguranca Internet</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="sociologia_critica.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">sociologia_critica.html</span>
+            </div>
+            <h3>Sociologia Critica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Comunidade e Comunicação</h2>
+        <p>6 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="comunidade_professores.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">comunidade_professores.html</span>
+            </div>
+            <h3>Comunidade Professores</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="jornal_escolar.html">
+            <div class="card-top">
+                <span class="icon">J</span>
+                <span class="tag">jornal_escolar.html</span>
+            </div>
+            <h3>Jornal Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="podcast_educacional.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">podcast_educacional.html</span>
+            </div>
+            <h3>Podcast Educacional</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="radio_escolar.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">radio_escolar.html</span>
+            </div>
+            <h3>Radio Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="reunioes_pedagogicas.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">reunioes_pedagogicas.html</span>
+            </div>
+            <h3>Reunioes Pedagogicas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="tv_escolar.html">
+            <div class="card-top">
+                <span class="icon">T</span>
+                <span class="tag">tv_escolar.html</span>
+            </div>
+            <h3>Tv Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="section-head">
+        <h2>Outras Páginas</h2>
+        <p>138 páginas nesta seção</p>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="adaptacoes_curriculares.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">adaptacoes_curriculares.html</span>
+            </div>
+            <h3>Adaptacoes Curriculares</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="analise_dados.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">analise_dados.html</span>
+            </div>
+            <h3>Analise Dados</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="aprendizagem_baseada_problemas.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">aprendizagem_baseada_problemas.html</span>
+            </div>
+            <h3>Aprendizagem Baseada Problemas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="aprendizagem_baseada_projetos.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">aprendizagem_baseada_projetos.html</span>
+            </div>
+            <h3>Aprendizagem Baseada Projetos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="arte_visuais.html">
+            <div class="card-top">
+                <span class="icon">A</span>
+                <span class="tag">arte_visuais.html</span>
+            </div>
+            <h3>Arte Visuais</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="banco_questoes.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">banco_questoes.html</span>
+            </div>
+            <h3>Banco Questoes</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="biblioteca_infantil.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">biblioteca_infantil.html</span>
+            </div>
+            <h3>Biblioteca Infantil</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="biblioteca_juvenil.html">
+            <div class="card-top">
+                <span class="icon">B</span>
+                <span class="tag">biblioteca_juvenil.html</span>
+            </div>
+            <h3>Biblioteca Juvenil</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="calculadora_cientifica.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">calculadora_cientifica.html</span>
+            </div>
+            <h3>Calculadora Cientifica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="calculadora_estatistica.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">calculadora_estatistica.html</span>
+            </div>
+            <h3>Calculadora Estatistica</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="clube_leitura.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">clube_leitura.html</span>
+            </div>
+            <h3>Clube Leitura</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="cronograma_estudos.html">
+            <div class="card-top">
+                <span class="icon">C</span>
+                <span class="tag">cronograma_estudos.html</span>
+            </div>
+            <h3>Cronograma Estudos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="educacao_ambiental.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">educacao_ambiental.html</span>
+            </div>
+            <h3>Educacao Ambiental</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="educacao_financeira.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">educacao_financeira.html</span>
+            </div>
+            <h3>Educacao Financeira</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="educacao_inclusiva.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">educacao_inclusiva.html</span>
+            </div>
+            <h3>Educacao Inclusiva</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="empreendedorismo_escolar.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">empreendedorismo_escolar.html</span>
+            </div>
+            <h3>Empreendedorismo Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="ensino_hibrido.html">
+            <div class="card-top">
+                <span class="icon">E</span>
+                <span class="tag">ensino_hibrido.html</span>
+            </div>
+            <h3>Ensino Hibrido</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="feira_cultural.html">
+            <div class="card-top">
+                <span class="icon">F</span>
+                <span class="tag">feira_cultural.html</span>
+            </div>
+            <h3>Feira Cultural</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="gamificacao_escolar.html">
+            <div class="card-top">
+                <span class="icon">G</span>
+                <span class="tag">gamificacao_escolar.html</span>
+            </div>
+            <h3>Gamificacao Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="horta_escolar.html">
+            <div class="card-top">
+                <span class="icon">H</span>
+                <span class="tag">horta_escolar.html</span>
+            </div>
+            <h3>Horta Escolar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="hub_formularios.html">
+            <div class="card-top">
+                <span class="icon">H</span>
+                <span class="tag">hub_formularios.html</span>
+            </div>
+            <h3>Hub Formularios</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="ingles_conversacao.html">
+            <div class="card-top">
+                <span class="icon">I</span>
+                <span class="tag">ingles_conversacao.html</span>
+            </div>
+            <h3>Ingles Conversacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="leitura_interpretacao.html">
+            <div class="card-top">
+                <span class="icon">L</span>
+                <span class="tag">leitura_interpretacao.html</span>
+            </div>
+            <h3>Leitura Interpretacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="mapa_habilidades.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">mapa_habilidades.html</span>
+            </div>
+            <h3>Mapa Habilidades</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="microlearning.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">microlearning.html</span>
+            </div>
+            <h3>Microlearning</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="musica_educacao.html">
+            <div class="card-top">
+                <span class="icon">M</span>
+                <span class="tag">musica_educacao.html</span>
+            </div>
+            <h3>Musica Educacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="organizador_estudos.html">
+            <div class="card-top">
+                <span class="icon">O</span>
+                <span class="tag">organizador_estudos.html</span>
+            </div>
+            <h3>Organizador Estudos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="orientacao_estudos.html">
+            <div class="card-top">
+                <span class="icon">O</span>
+                <span class="tag">orientacao_estudos.html</span>
+            </div>
+            <h3>Orientacao Estudos</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="orientacao_profissional.html">
+            <div class="card-top">
+                <span class="icon">O</span>
+                <span class="tag">orientacao_profissional.html</span>
+            </div>
+            <h3>Orientacao Profissional</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_001.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_001.html</span>
+            </div>
+            <h3>Pagina Avancada 001</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_002.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_002.html</span>
+            </div>
+            <h3>Pagina Avancada 002</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_003.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_003.html</span>
+            </div>
+            <h3>Pagina Avancada 003</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_004.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_004.html</span>
+            </div>
+            <h3>Pagina Avancada 004</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_005.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_005.html</span>
+            </div>
+            <h3>Pagina Avancada 005</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_006.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_006.html</span>
+            </div>
+            <h3>Pagina Avancada 006</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_007.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_007.html</span>
+            </div>
+            <h3>Pagina Avancada 007</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_008.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_008.html</span>
+            </div>
+            <h3>Pagina Avancada 008</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_009.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_009.html</span>
+            </div>
+            <h3>Pagina Avancada 009</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_010.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_010.html</span>
+            </div>
+            <h3>Pagina Avancada 010</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_011.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_011.html</span>
+            </div>
+            <h3>Pagina Avancada 011</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_012.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_012.html</span>
+            </div>
+            <h3>Pagina Avancada 012</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_013.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_013.html</span>
+            </div>
+            <h3>Pagina Avancada 013</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_014.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_014.html</span>
+            </div>
+            <h3>Pagina Avancada 014</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_015.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_015.html</span>
+            </div>
+            <h3>Pagina Avancada 015</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_016.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_016.html</span>
+            </div>
+            <h3>Pagina Avancada 016</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_017.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_017.html</span>
+            </div>
+            <h3>Pagina Avancada 017</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_018.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_018.html</span>
+            </div>
+            <h3>Pagina Avancada 018</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_019.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_019.html</span>
+            </div>
+            <h3>Pagina Avancada 019</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_020.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_020.html</span>
+            </div>
+            <h3>Pagina Avancada 020</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_021.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_021.html</span>
+            </div>
+            <h3>Pagina Avancada 021</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_022.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_022.html</span>
+            </div>
+            <h3>Pagina Avancada 022</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_023.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_023.html</span>
+            </div>
+            <h3>Pagina Avancada 023</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_024.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_024.html</span>
+            </div>
+            <h3>Pagina Avancada 024</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_025.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_025.html</span>
+            </div>
+            <h3>Pagina Avancada 025</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_026.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_026.html</span>
+            </div>
+            <h3>Pagina Avancada 026</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_027.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_027.html</span>
+            </div>
+            <h3>Pagina Avancada 027</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_028.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_028.html</span>
+            </div>
+            <h3>Pagina Avancada 028</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_029.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_029.html</span>
+            </div>
+            <h3>Pagina Avancada 029</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_030.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_030.html</span>
+            </div>
+            <h3>Pagina Avancada 030</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_031.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_031.html</span>
+            </div>
+            <h3>Pagina Avancada 031</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_032.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_032.html</span>
+            </div>
+            <h3>Pagina Avancada 032</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_033.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_033.html</span>
+            </div>
+            <h3>Pagina Avancada 033</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_034.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_034.html</span>
+            </div>
+            <h3>Pagina Avancada 034</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_035.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_035.html</span>
+            </div>
+            <h3>Pagina Avancada 035</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_036.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_036.html</span>
+            </div>
+            <h3>Pagina Avancada 036</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_037.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_037.html</span>
+            </div>
+            <h3>Pagina Avancada 037</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_038.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_038.html</span>
+            </div>
+            <h3>Pagina Avancada 038</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_039.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_039.html</span>
+            </div>
+            <h3>Pagina Avancada 039</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_040.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_040.html</span>
+            </div>
+            <h3>Pagina Avancada 040</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_041.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_041.html</span>
+            </div>
+            <h3>Pagina Avancada 041</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_042.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_042.html</span>
+            </div>
+            <h3>Pagina Avancada 042</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_043.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_043.html</span>
+            </div>
+            <h3>Pagina Avancada 043</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_044.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_044.html</span>
+            </div>
+            <h3>Pagina Avancada 044</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_045.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_045.html</span>
+            </div>
+            <h3>Pagina Avancada 045</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_046.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_046.html</span>
+            </div>
+            <h3>Pagina Avancada 046</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_047.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_047.html</span>
+            </div>
+            <h3>Pagina Avancada 047</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_048.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_048.html</span>
+            </div>
+            <h3>Pagina Avancada 048</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_049.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_049.html</span>
+            </div>
+            <h3>Pagina Avancada 049</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_050.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_050.html</span>
+            </div>
+            <h3>Pagina Avancada 050</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_051.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_051.html</span>
+            </div>
+            <h3>Pagina Avancada 051</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_052.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_052.html</span>
+            </div>
+            <h3>Pagina Avancada 052</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_053.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_053.html</span>
+            </div>
+            <h3>Pagina Avancada 053</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_054.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_054.html</span>
+            </div>
+            <h3>Pagina Avancada 054</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_055.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_055.html</span>
+            </div>
+            <h3>Pagina Avancada 055</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_056.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_056.html</span>
+            </div>
+            <h3>Pagina Avancada 056</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_057.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_057.html</span>
+            </div>
+            <h3>Pagina Avancada 057</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_058.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_058.html</span>
+            </div>
+            <h3>Pagina Avancada 058</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_059.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_059.html</span>
+            </div>
+            <h3>Pagina Avancada 059</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_060.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_060.html</span>
+            </div>
+            <h3>Pagina Avancada 060</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_061.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_061.html</span>
+            </div>
+            <h3>Pagina Avancada 061</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_062.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_062.html</span>
+            </div>
+            <h3>Pagina Avancada 062</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_063.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_063.html</span>
+            </div>
+            <h3>Pagina Avancada 063</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_064.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_064.html</span>
+            </div>
+            <h3>Pagina Avancada 064</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_065.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_065.html</span>
+            </div>
+            <h3>Pagina Avancada 065</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_066.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_066.html</span>
+            </div>
+            <h3>Pagina Avancada 066</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_067.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_067.html</span>
+            </div>
+            <h3>Pagina Avancada 067</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_068.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_068.html</span>
+            </div>
+            <h3>Pagina Avancada 068</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_069.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_069.html</span>
+            </div>
+            <h3>Pagina Avancada 069</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_070.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_070.html</span>
+            </div>
+            <h3>Pagina Avancada 070</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_071.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_071.html</span>
+            </div>
+            <h3>Pagina Avancada 071</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_072.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_072.html</span>
+            </div>
+            <h3>Pagina Avancada 072</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_073.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_073.html</span>
+            </div>
+            <h3>Pagina Avancada 073</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_074.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_074.html</span>
+            </div>
+            <h3>Pagina Avancada 074</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_075.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_075.html</span>
+            </div>
+            <h3>Pagina Avancada 075</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_076.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_076.html</span>
+            </div>
+            <h3>Pagina Avancada 076</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_077.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_077.html</span>
+            </div>
+            <h3>Pagina Avancada 077</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_078.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_078.html</span>
+            </div>
+            <h3>Pagina Avancada 078</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_079.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_079.html</span>
+            </div>
+            <h3>Pagina Avancada 079</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_080.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_080.html</span>
+            </div>
+            <h3>Pagina Avancada 080</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_081.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_081.html</span>
+            </div>
+            <h3>Pagina Avancada 081</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_082.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_082.html</span>
+            </div>
+            <h3>Pagina Avancada 082</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_083.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_083.html</span>
+            </div>
+            <h3>Pagina Avancada 083</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_084.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_084.html</span>
+            </div>
+            <h3>Pagina Avancada 084</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_085.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_085.html</span>
+            </div>
+            <h3>Pagina Avancada 085</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_086.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_086.html</span>
+            </div>
+            <h3>Pagina Avancada 086</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_087.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_087.html</span>
+            </div>
+            <h3>Pagina Avancada 087</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_088.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_088.html</span>
+            </div>
+            <h3>Pagina Avancada 088</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_089.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_089.html</span>
+            </div>
+            <h3>Pagina Avancada 089</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_090.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_090.html</span>
+            </div>
+            <h3>Pagina Avancada 090</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_091.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_091.html</span>
+            </div>
+            <h3>Pagina Avancada 091</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_092.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_092.html</span>
+            </div>
+            <h3>Pagina Avancada 092</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_093.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_093.html</span>
+            </div>
+            <h3>Pagina Avancada 093</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_094.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_094.html</span>
+            </div>
+            <h3>Pagina Avancada 094</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_095.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_095.html</span>
+            </div>
+            <h3>Pagina Avancada 095</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_096.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_096.html</span>
+            </div>
+            <h3>Pagina Avancada 096</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_097.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_097.html</span>
+            </div>
+            <h3>Pagina Avancada 097</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_098.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_098.html</span>
+            </div>
+            <h3>Pagina Avancada 098</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_099.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_099.html</span>
+            </div>
+            <h3>Pagina Avancada 099</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pagina_avancada_100.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pagina_avancada_100.html</span>
+            </div>
+            <h3>Pagina Avancada 100</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="pesquisa_satisfacao.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">pesquisa_satisfacao.html</span>
+            </div>
+            <h3>Pesquisa Satisfacao</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="producao_textual.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">producao_textual.html</span>
+            </div>
+            <h3>Producao Textual</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="projeto_vida.html">
+            <div class="card-top">
+                <span class="icon">P</span>
+                <span class="tag">projeto_vida.html</span>
+            </div>
+            <h3>Projeto Vida</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="roteiros_videoaula.html">
+            <div class="card-top">
+                <span class="icon">R</span>
+                <span class="tag">roteiros_videoaula.html</span>
+            </div>
+            <h3>Roteiros Videoaula</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="sala_aula_invertida.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">sala_aula_invertida.html</span>
+            </div>
+            <h3>Sala Aula Invertida</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="saude_bem_estar.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">saude_bem_estar.html</span>
+            </div>
+            <h3>Saude Bem Estar</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="studio_aulas.html">
+            <div class="card-top">
+                <span class="icon">S</span>
+                <span class="tag">studio_aulas.html</span>
+            </div>
+            <h3>Studio Aulas</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="turismo_pedagogico.html">
+            <div class="card-top">
+                <span class="icon">T</span>
+                <span class="tag">turismo_pedagogico.html</span>
+            </div>
+            <h3>Turismo Pedagogico</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+
+        <a class="card" href="xadrez_educacional.html">
+            <div class="card-top">
+                <span class="icon">X</span>
+                <span class="tag">xadrez_educacional.html</span>
+            </div>
+            <h3>Xadrez Educacional</h3>
+            <p>Página conectada do portal pronta para uso e expansão.</p>
+            <span class="open">Abrir página →</span>
+        </a>
+        
+      </div>
+    </section>
+    
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <strong>Portal Master Gigante</strong>
+      <div>Central única com todas as páginas conectadas do seu projeto.</div>
+    </div>
+    <div>
+      <div>Total reunido: 276 páginas</div>
+      <div>Estrutura pronta para evoluir.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', function(){
+  const q = this.value.toLowerCase().trim();
+  document.querySelectorAll('.section').forEach(section => {
+    let visible = 0;
+    section.querySelectorAll('.card').forEach(card => {
+      const text = card.innerText.toLowerCase();
+      const match = !q || text.includes(q);
+      card.classList.toggle('hidden', !match);
+      if(match) visible++;
+    });
+    section.classList.toggle('hidden', visible === 0);
+  });
+});
+</script>
+</body>
+</html>

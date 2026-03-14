@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Admin</title>
+<style>
+:root{
+  --azul:#0b3d91;
+  --azul2:#2563eb;
+  --txt:#13233d;
+  --muted:#64748b;
+  --bg:#f4f8ff;
+  --card:#ffffff;
+  --borda:#dbe6fb;
+  --shadow:0 14px 34px rgba(11,61,145,.10);
+  --radius:22px;
+  --ok:#0f9d58;
+  --warn:#d97706;
+  --danger:#dc2626;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#edf4ff,#fff);color:var(--txt)}
+a{text-decoration:none;color:inherit}
+.topbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--borda)}
+.topbar-inner{max-width:1400px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;font-weight:bold;box-shadow:var(--shadow)}
+.brand h1{margin:0;font-size:20px}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.nav{display:flex;flex-wrap:wrap;gap:10px}
+.nav a{padding:10px 12px;border-radius:12px;background:#eef4ff;color:var(--azul);font-weight:bold;font-size:14px}
+.hero,.section{max-width:1400px;margin:auto;padding:24px 18px}
+.hero-box{background:linear-gradient(135deg,#0b3d91,#2563eb);color:#fff;border-radius:32px;box-shadow:var(--shadow);padding:36px;display:grid;grid-template-columns:1.2fr .85fr;gap:24px}
+.badge{display:inline-block;background:rgba(255,255,255,.16);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:bold}
+.hero h2{font-size:42px;line-height:1.08;margin:14px 0 14px}
+.hero p{font-size:18px;line-height:1.68;margin:0 0 18px;color:rgba(255,255,255,.95)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:13px 18px;border-radius:14px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer}
+.btn-primary{background:#fff;color:var(--azul)}
+.btn-secondary{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.panel{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:22px}
+.panel-item{background:rgba(255,255,255,.10);padding:14px 16px;border-radius:16px;margin-top:12px}
+.panel-item strong{display:block;margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card,.box{background:#fff;border:1px solid var(--borda);border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+.card h3,.box h3{margin:0 0 12px}
+.card p,.box p{color:var(--muted);line-height:1.6}
+.two{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-weight:bold;margin-bottom:8px}
+input,textarea,select{width:100%;padding:13px 14px;border:1px solid #cfe0ff;border-radius:14px;font-size:15px;background:#fff}
+textarea{min-height:160px;resize:vertical}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+button.action{border:none;background:var(--azul);color:#fff;padding:11px 14px;border-radius:12px;font-weight:bold;cursor:pointer}
+button.alt{background:#eef4ff;color:var(--azul)}
+button.ok{background:var(--ok);color:#fff}
+button.warn{background:var(--warn);color:#fff}
+button.danger{background:var(--danger);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stat{padding:16px;background:#f8fbff;border:1px solid var(--borda);border-radius:18px}
+.stat strong{display:block;font-size:26px;margin-bottom:6px;color:var(--azul)}
+.list{display:grid;gap:10px}
+.item{padding:14px;border:1px solid var(--borda);border-radius:16px;background:#fbfdff}
+small.muted,.muted{color:var(--muted)}
+.notice{padding:12px 14px;border-radius:14px;background:#eff6ff;border:1px solid #cfe0ff;color:var(--azul)}
+.footer{margin-top:24px;background:#0d1f3c;color:#dbe7ff}
+.footer-inner{max-width:1400px;margin:auto;padding:28px 18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hidden{display:none!important}
+.tag{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:bold;background:#eef4ff;color:var(--azul)}
+.kbd{font-family:monospace;background:#f2f6ff;border:1px solid var(--borda);padding:2px 6px;border-radius:6px}
+@media (max-width:1000px){
+  .hero-box,.two{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:700px){
+  .grid,.row,.stats{grid-template-columns:1fr}
+  .hero h2{font-size:30px}
+  .topbar-inner{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">A</div>
+      <div>
+        <h1 data-site-name>Portal Professores do Paraná</h1>
+        <p data-site-subtitle>Login administrativo local</p>
+      </div>
+    </div>
+    
+<nav class="nav">
+  <a href="index.html">Início</a>
+  <a href="admin-login.html">Login Admin</a>
+  <a href="admin.html">Painel Admin</a>
+  <a href="viewer.html?slug=index">Visualizar Página</a>
+</nav>
+
+  </div>
+</header>
+
+<section class="section">
+  <div class="two">
+    <div class="box">
+      <h3>Entrar no painel admin</h3>
+      <p>Faça login para acessar o painel administrativo local.</p>
+      <form onsubmit="adminLogin(event)">
+        <div class="row">
+          <div>
+            <label for="loginUser">Usuário</label>
+            <input id="loginUser" value="admin" required>
+          </div>
+          <div>
+            <label for="loginPass">Senha</label>
+            <input id="loginPass" type="password" value="1234" required>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="action ok" type="submit">Entrar</button>
+          <a class="btn btn-primary" href="index.html">Voltar</a>
+        </div>
+      </form>
+    </div>
+    <div class="box">
+      <h3>Como funciona</h3>
+      <div class="list">
+        <div class="item">O login também é local e usa as configurações guardadas no navegador.</div>
+        <div class="item">A senha padrão é <strong>1234</strong>, mas pode ser alterada dentro do admin.</div>
+        <div class="item">Sem backend: ideal para testes, protótipos e portais locais.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><strong>Login Admin</strong></div>
+    <div>Controle local do portal</div>
+  </div>
+</footer>
+<script>
+const STORAGE_KEYS = {
+  pages: 'portal_pages_v1',
+  settings: 'portal_settings_v1',
+  sessions: 'portal_sessions_v1'
+};
+
+const defaultPages = [
+  {
+    id: crypto.randomUUID(),
+    title: 'Página Inicial',
+    slug: 'index',
+    category: 'Portal',
+    status: 'Publicado',
+    content: 'Bem-vindo ao portal. Esta é a página inicial com conteúdo de exemplo.',
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: crypto.randomUUID(),
+    title: 'Painel Admin',
+    slug: 'admin',
+    category: 'Administração',
+    status: 'Publicado',
+    content: 'Painel administrativo para gerenciar páginas, rascunhos e preferências locais.',
+    updatedAt: new Date().toISOString()
+  }
+];
+
+const defaultSettings = {
+  siteName: 'Portal Professores do Paraná',
+  siteSubtitle: 'Admin com salvamento local',
+  theme: 'azul',
+  adminUser: 'admin',
+  adminPass: '1234'
+};
+
+function readLocal(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){
+    return fallback;
+  }
+}
+function writeLocal(key, value){
+  localStorage.setItem(key, JSON.stringify(value));
+}
+function ensureData(){
+  if(!localStorage.getItem(STORAGE_KEYS.pages)) writeLocal(STORAGE_KEYS.pages, defaultPages);
+  if(!localStorage.getItem(STORAGE_KEYS.settings)) writeLocal(STORAGE_KEYS.settings, defaultSettings);
+  if(!localStorage.getItem(STORAGE_KEYS.sessions)) writeLocal(STORAGE_KEYS.sessions, []);
+}
+function getPages(){ return readLocal(STORAGE_KEYS.pages, defaultPages); }
+function setPages(v){ writeLocal(STORAGE_KEYS.pages, v); }
+function getSettings(){ return readLocal(STORAGE_KEYS.settings, defaultSettings); }
+function setSettings(v){ writeLocal(STORAGE_KEYS.settings, v); }
+function getSessions(){ return readLocal(STORAGE_KEYS.sessions, []); }
+function setSessions(v){ writeLocal(STORAGE_KEYS.sessions, v); }
+
+function fmtDate(iso){
+  const d = new Date(iso);
+  return isNaN(d) ? '-' : d.toLocaleString('pt-BR');
+}
+function pageCountByStatus(status){
+  return getPages().filter(p => p.status === status).length;
+}
+function escapeHtml(str=''){
+  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function updateBrand(){
+  const s = getSettings();
+  document.querySelectorAll('[data-site-name]').forEach(el => el.textContent = s.siteName);
+  document.querySelectorAll('[data-site-subtitle]').forEach(el => el.textContent = s.siteSubtitle);
+}
+function initStorageInfo(){
+  const pages = getPages();
+  const info = document.getElementById('storageInfo');
+  if(info){
+    info.textContent = `Páginas salvas localmente: ${pages.length}. Tudo fica no navegador deste dispositivo.`;
+  }
+}
+
+function exportData(){
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    settings: getSettings(),
+    pages: getPages(),
+    sessions: getSessions()
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'portal-backup-local.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function importDataFromFile(file){
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const data = JSON.parse(reader.result);
+      if(Array.isArray(data.pages)) setPages(data.pages);
+      if(data.settings) setSettings(data.settings);
+      if(Array.isArray(data.sessions)) setSessions(data.sessions);
+      alert('Backup importado com sucesso.');
+      location.reload();
+    }catch(e){
+      alert('Arquivo inválido para importação.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function clearAllData(){
+  if(!confirm('Apagar todos os dados locais deste portal neste navegador?')) return;
+  localStorage.removeItem(STORAGE_KEYS.pages);
+  localStorage.removeItem(STORAGE_KEYS.settings);
+  localStorage.removeItem(STORAGE_KEYS.sessions);
+  ensureData();
+  alert('Dados locais resetados.');
+  location.reload();
+}
+
+function saveSession(name){
+  const sessions = getSessions();
+  sessions.unshift({
+    id: crypto.randomUUID(),
+    name: name || `Sessão ${new Date().toLocaleString('pt-BR')}`,
+    createdAt: new Date().toISOString(),
+    pageSnapshotCount: getPages().length
+  });
+  setSessions(sessions.slice(0,20));
+}
+
+function renderSessions(){
+  const box = document.getElementById('sessionList');
+  if(!box) return;
+  const sessions = getSessions();
+  box.innerHTML = sessions.length ? sessions.map(s => `
+    <div class="item">
+      <strong>${escapeHtml(s.name)}</strong><br>
+      <small class="muted">Criada em ${fmtDate(s.createdAt)} • ${s.pageSnapshotCount} páginas no momento</small>
+    </div>
+  `).join('') : '<div class="item">Nenhuma sessão registrada ainda.</div>';
+}
+
+function refreshStats(){
+  const pages = getPages();
+  const total = document.getElementById('statTotal');
+  const pub = document.getElementById('statPub');
+  const draft = document.getElementById('statDraft');
+  if(total) total.textContent = pages.length;
+  if(pub) pub.textContent = pageCountByStatus('Publicado');
+  if(draft) draft.textContent = pageCountByStatus('Rascunho');
+}
+
+function renderPageList(){
+  const box = document.getElementById('pageList');
+  if(!box) return;
+  const pages = getPages().sort((a,b)=> new Date(b.updatedAt) - new Date(a.updatedAt));
+  box.innerHTML = pages.length ? pages.map(p => `
+    <div class="item">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap">
+        <div>
+          <strong>${escapeHtml(p.title)}</strong> <span class="tag">${escapeHtml(p.status)}</span>
+          <div class="muted">slug: ${escapeHtml(p.slug)} • categoria: ${escapeHtml(p.category)}</div>
+          <small class="muted">Atualizado em ${fmtDate(p.updatedAt)}</small>
+        </div>
+        <div class="toolbar" style="margin-top:0">
+          <button class="action alt" onclick="editPage('${p.id}')">Editar</button>
+          <button class="action danger" onclick="deletePage('${p.id}')">Excluir</button>
+        </div>
+      </div>
+    </div>
+  `).join('') : '<div class="item">Nenhuma página cadastrada ainda.</div>';
+}
+
+function loadSettingsForm(){
+  const s = getSettings();
+  const map = {
+    settingSiteName: s.siteName,
+    settingSiteSubtitle: s.siteSubtitle,
+    settingTheme: s.theme,
+    settingAdminUser: s.adminUser,
+    settingAdminPass: s.adminPass
+  };
+  Object.entries(map).forEach(([id,val]) => {
+    const el = document.getElementById(id);
+    if(el) el.value = val;
+  });
+}
+
+function saveSettingsForm(){
+  const s = {
+    siteName: document.getElementById('settingSiteName').value.trim() || defaultSettings.siteName,
+    siteSubtitle: document.getElementById('settingSiteSubtitle').value.trim() || defaultSettings.siteSubtitle,
+    theme: document.getElementById('settingTheme').value,
+    adminUser: document.getElementById('settingAdminUser').value.trim() || 'admin',
+    adminPass: document.getElementById('settingAdminPass').value.trim() || '1234'
+  };
+  setSettings(s);
+  updateBrand();
+  alert('Configurações salvas localmente.');
+  saveSession('Configurações atualizadas');
+}
+
+function resetForm(){
+  ['pageId','pageTitle','pageSlug','pageCategory','pageStatus','pageContent'].forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(id === 'pageStatus') el.value = 'Rascunho';
+    else el.value = '';
+  });
+}
+
+function autoSlug(value){
+  return value.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .slice(0,60);
+}
+
+function attachSlug(){
+  const t = document.getElementById('pageTitle');
+  const s = document.getElementById('pageSlug');
+  if(t && s){
+    t.addEventListener('input', () => {
+      if(!s.dataset.touched || !s.value.trim()) s.value = autoSlug(t.value);
+    });
+    s.addEventListener('input', () => s.dataset.touched = '1');
+  }
+}
+
+function savePageForm(){
+  const id = document.getElementById('pageId').value.trim();
+  const title = document.getElementById('pageTitle').value.trim();
+  const slug = document.getElementById('pageSlug').value.trim() || autoSlug(title);
+  const category = document.getElementById('pageCategory').value.trim() || 'Geral';
+  const status = document.getElementById('pageStatus').value;
+  const content = document.getElementById('pageContent').value.trim();
+
+  if(!title || !slug){
+    alert('Preencha pelo menos título e slug.');
+    return;
+  }
+
+  const pages = getPages();
+  const now = new Date().toISOString();
+  const sameSlug = pages.find(p => p.slug === slug && p.id !== id);
+  if(sameSlug){
+    alert('Já existe outra página com este slug.');
+    return;
+  }
+
+  if(id){
+    const idx = pages.findIndex(p => p.id === id);
+    if(idx >= 0){
+      pages[idx] = {...pages[idx], title, slug, category, status, content, updatedAt: now};
+    }
+  }else{
+    pages.unshift({id: crypto.randomUUID(), title, slug, category, status, content, updatedAt: now});
+  }
+
+  setPages(pages);
+  renderPageList();
+  refreshStats();
+  renderPublicPages();
+  saveSession(`Página salva: ${title}`);
+  alert('Página salva localmente.');
+  resetForm();
+}
+
+function editPage(id){
+  const p = getPages().find(x => x.id === id);
+  if(!p) return;
+  document.getElementById('pageId').value = p.id;
+  document.getElementById('pageTitle').value = p.title;
+  document.getElementById('pageSlug').value = p.slug;
+  document.getElementById('pageCategory').value = p.category;
+  document.getElementById('pageStatus').value = p.status;
+  document.getElementById('pageContent').value = p.content;
+  window.scrollTo({top: document.getElementById('editorBox').offsetTop - 80, behavior:'smooth'});
+}
+window.editPage = editPage;
+
+function deletePage(id){
+  const pages = getPages();
+  const p = pages.find(x => x.id === id);
+  if(!p) return;
+  if(!confirm(`Excluir "${p.title}" do salvamento local?`)) return;
+  setPages(pages.filter(x => x.id !== id));
+  renderPageList();
+  refreshStats();
+  renderPublicPages();
+  saveSession(`Página excluída: ${p.title}`);
+}
+window.deletePage = deletePage;
+
+function renderPublicPages(){
+  const box = document.getElementById('publicPages');
+  if(!box) return;
+  const pages = getPages().filter(p => p.status === 'Publicado').sort((a,b)=>a.title.localeCompare(b.title));
+  box.innerHTML = pages.length ? pages.map(p => `
+    <a class="card" href="viewer.html?slug=${encodeURIComponent(p.slug)}">
+      <h3>${escapeHtml(p.title)}</h3>
+      <p>${escapeHtml((p.content || '').slice(0,160))}${(p.content || '').length > 160 ? '...' : ''}</p>
+      <small class="muted">${escapeHtml(p.category)} • ${escapeHtml(p.slug)}</small>
+    </a>
+  `).join('') : '<div class="card"><h3>Nenhuma página publicada</h3><p>Publique pelo menos uma página no painel admin.</p></div>';
+}
+
+function renderViewer(){
+  const out = document.getElementById('viewerContent');
+  if(!out) return;
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+  const pages = getPages();
+  const page = pages.find(p => p.slug === slug && p.status === 'Publicado');
+  const titleEl = document.getElementById('viewerTitle');
+  const metaEl = document.getElementById('viewerMeta');
+  if(page){
+    titleEl.textContent = page.title;
+    metaEl.textContent = `${page.category} • atualizado em ${fmtDate(page.updatedAt)}`;
+    out.innerHTML = `<p class="lead">${escapeHtml(page.content).replace(/\n/g,'<br>')}</p>`;
+  }else{
+    titleEl.textContent = 'Página não encontrada';
+    metaEl.textContent = 'Verifique se a página foi publicada no painel admin.';
+    out.innerHTML = '<div class="notice">Esta página ainda não existe ou está em rascunho no salvamento local.</div>';
+  }
+}
+
+function adminLogin(e){
+  e.preventDefault();
+  const s = getSettings();
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value.trim();
+  if(user === s.adminUser && pass === s.adminPass){
+    sessionStorage.setItem('portal_admin_logged', '1');
+    saveSession('Login no admin');
+    location.href = 'admin.html';
+  }else{
+    alert('Usuário ou senha inválidos.');
+  }
+}
+window.adminLogin = adminLogin;
+
+function requireAdmin(){
+  const gate = document.getElementById('adminGate');
+  const content = document.getElementById('adminContent');
+  if(!gate || !content) return;
+  const logged = sessionStorage.getItem('portal_admin_logged') === '1';
+  gate.classList.toggle('hidden', logged);
+  content.classList.toggle('hidden', !logged);
+}
+
+function logoutAdmin(){
+  sessionStorage.removeItem('portal_admin_logged');
+  location.reload();
+}
+window.logoutAdmin = logoutAdmin;
+
+function boot(){
+  ensureData();
+  updateBrand();
+  initStorageInfo();
+  refreshStats();
+  renderPageList();
+  loadSettingsForm();
+  renderSessions();
+  renderPublicPages();
+  renderViewer();
+  requireAdmin();
+  attachSlug();
+}
+document.addEventListener('DOMContentLoaded', boot);
+</script>
+</body>
+</html>
